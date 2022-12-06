@@ -18,6 +18,18 @@ def home():
 def chat():
     return render_template("chatroom.html")
 
+#Pretrained Model
+PRE_TRAINED_MODEL = 'indobenchmark/indobert-base-p2'
+
+#Load tokenizer dari pretrained model
+bert_tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL)
+
+# Load hasil fine-tuning
+bert_load_model = TFBertForSequenceClassification.from_pretrained(PRE_TRAINED_MODEL, num_labels=62)
+
+#Load Model
+bert_load_model.load_weights('bert-model.h5')
+
 
 # [Routing untuk API]		
 @app.route("/get")
@@ -39,18 +51,5 @@ def apiDeteksi():
 
 
 if __name__ == '__main__':
-
-    #Pretrained Model
-    PRE_TRAINED_MODEL = 'indobenchmark/indobert-base-p2'
-
-    #Load tokenizer dari pretrained model
-    bert_tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL)
-
-    # Load hasil fine-tuning
-    bert_load_model = TFBertForSequenceClassification.from_pretrained(PRE_TRAINED_MODEL, num_labels=62)
-
-    #Load Model
-    bert_load_model.load_weights('bert-model.h5')
-
     #Deploy di localhost
     app.run(port=5000, debug=True)
