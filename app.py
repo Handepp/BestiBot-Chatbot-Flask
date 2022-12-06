@@ -1,4 +1,5 @@
 from flask import Flask,render_template,request,jsonify
+import os
 import random
 from transformers import BertTokenizer
 from transformers import TFBertForSequenceClassification
@@ -51,5 +52,4 @@ def apiDeteksi():
 
 
 if __name__ == '__main__':
-    #Deploy di localhost
-    app.run(port=5000, debug=True)
+    app.run(debug=True, port=os.getenv("PORT", default=5000))
