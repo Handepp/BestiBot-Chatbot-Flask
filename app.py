@@ -23,6 +23,12 @@ def chat():
 @app.route("/get")
 def apiDeteksi():
     prediction_input = request.args.get('prediction_input')
+    
+    #Load tokenizer dari pretrained model
+    bert_tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL)
+
+    # Load hasil fine-tuning
+    bert_load_model = TFBertForSequenceClassification.from_pretrained(PRE_TRAINED_MODEL, num_labels=62)
 
     input_text_tokenized = bert_tokenizer.encode(prediction_input,
                                              truncation=True,
@@ -42,12 +48,6 @@ if __name__ == '__main__':
     
     #Pretrained Model
     PRE_TRAINED_MODEL = 'indobenchmark/indobert-base-p2'
-
-    #Load tokenizer dari pretrained model
-    bert_tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL)
-
-    # Load hasil fine-tuning
-    bert_load_model = TFBertForSequenceClassification.from_pretrained(PRE_TRAINED_MODEL, num_labels=62)
 
     #Load Model
     bert_load_model.load_weights('bert-model.h5')
