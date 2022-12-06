@@ -8,7 +8,8 @@ from keras.models import load_model
 from bert import *
 
 app   = Flask(__name__, static_url_path='/static')
-model = None
+#Load Model
+bert_load_model.load_weights('bert-model.h5')
 
 @app.route("/")
 def home():
@@ -47,9 +48,5 @@ def apiDeteksi():
     return res
 
 
-if __name__ == '__main__':
-    
-    #Load Model
-    bert_load_model.load_weights('bert-model.h5')
-    
+if __name__ == '__main__':    
     app.run(debug=True, port=os.getenv("PORT", default=5000))
