@@ -9,19 +9,6 @@ from bert import *
 
 app   = Flask(__name__, static_url_path='/static')
 
-#Pretrained Model
-PRE_TRAINED_MODEL = 'indobenchmark/indobert-base-p2'
-
-#Load tokenizer dari pretrained model
-bert_tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL)
-    
-# Load hasil fine-tuning
-bert_load_model = TFBertForSequenceClassification.from_pretrained(PRE_TRAINED_MODEL, num_labels=62)
-    
-#Load Model
-bert_load_model.load_weights('bert-model.h5')
-
-
 @app.route("/")
 def home():
     return render_template("index.html")
