@@ -7,9 +7,6 @@ MarkupSafe==1.1.1
 Werkzeug==1.0.1
 transformers==4.24.0
 tensorflow==2.11.0
-tensorflow-estimator==2.11.0
-tensorflow-intel==2.11.0
-tensorflow-io-gcs-filesystem==0.28.0
 keras==2.11.0
 Keras-Preprocessing==1.1.2
 nltk==3.7
