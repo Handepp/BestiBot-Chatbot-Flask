@@ -37,5 +37,16 @@ def apiDeteksi():
     return res
 
 
-if __name__ == '__main__':    
+if __name__ == '__main__':   
+    #Pretrained Model
+    PRE_TRAINED_MODEL = 'indobenchmark/indobert-base-p2'
+
+    #Load tokenizer dari pretrained model
+    bert_tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL)
+
+    # Load hasil fine-tuning
+    bert_load_model = TFBertForSequenceClassification.from_pretrained(PRE_TRAINED_MODEL, num_labels=62)
+
+    #Load Model
+    bert_load_model.load_weights('bert-model.h5')
     app.run(debug=True, port=os.getenv("PORT", default=5000))
