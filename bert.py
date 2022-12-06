@@ -3,10 +3,6 @@ import nltk
 import pandas as pd
 import regex as re
 from sklearn.preprocessing import LabelEncoder
-from transformers import BertTokenizer
-from transformers import TFBertForSequenceClassification
-import tensorflow as tf
-from keras.models import load_model
 
 
 # Package sentence tokenizer
@@ -57,15 +53,3 @@ def text_preprocessing(text):
   return text
 
 data['patterns'] = data['patterns'].apply(text_preprocessing)
-
-#Pretrained Model
-PRE_TRAINED_MODEL = 'indobenchmark/indobert-base-p2'
-
-#Load tokenizer dari pretrained model
-bert_tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL)
-    
-# Load hasil fine-tuning
-bert_load_model = TFBertForSequenceClassification.from_pretrained(PRE_TRAINED_MODEL, num_labels=62)
-    
-#Load Model
-bert_load_model.load_weights('bert-model.h5')
