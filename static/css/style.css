@@ -240,7 +240,6 @@ small, .font_small {
 
 /* Jumbotron */
 .jumbotron {
-  background: url(../img/landingtosca-01.png);
   -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;
