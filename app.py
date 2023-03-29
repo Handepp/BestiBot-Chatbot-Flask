@@ -10,6 +10,7 @@ from bert import *
 app   = Flask(__name__, static_url_path='/static')
 model = None
 
+#test
 @app.route("/")
 def home():
     return render_template("index.html")
