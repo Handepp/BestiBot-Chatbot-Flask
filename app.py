@@ -55,5 +55,5 @@ if __name__ == '__main__':
     #Load Model
     bert_load_model.load_weights('bert-model.h5')
 
-    #Deploy di localhost
+    #Deploy di localhostt
     app.run(host="localhost", port=5000, debug=True)
